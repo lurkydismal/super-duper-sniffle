@@ -19,7 +19,6 @@ import {
     useRef,
     useState,
 } from "react";
-import RowImageDialog from "./RowImageDialog";
 import log from "@/utils/stdlog";
 import { TableRow, TableRowInsert } from "@/db/schema";
 import { GridApi } from "@mui/x-data-grid";
@@ -39,12 +38,12 @@ function RowDialogContent({
     apiRef,
     row,
     registerSubmit,
-    updateRowAction,
+    updateRow,
 }: {
     apiRef: RefObject<GridApi | null>;
     row: Readonly<TableRow>;
     registerSubmit: (fn: (() => Promise<void>) | null) => void;
-    updateRowAction: any;
+    updateRow: any;
 }) {
     const { showError } = useSnackbar();
     const [content, setContent] = useState<string | null>(row.content ?? null);
@@ -135,7 +134,7 @@ function RowDialogContent({
     const _updateRow = useCallback(
         async (fd: FormData) => {
             try {
-                const status: boolean = await updateRowAction(fd);
+                const status: boolean = await updateRow(fd);
 
                 if (status) {
                     // update DataGrid row locally (apiRef from parent)
@@ -152,7 +151,7 @@ function RowDialogContent({
                 showError(err);
             }
         },
-        [updateRowAction, row, content, apiRef],
+        [updateRow, row, content, apiRef],
     );
 
     const submit = useCallback(async () => {
@@ -254,13 +253,6 @@ function RowDialogContent({
                         </Typography>
                     </Grid>
                 </Grid>
-
-                <RowImageDialog
-                    id={row.id}
-                    src={`/${row.id}.jpg`}
-                    open={open}
-                    setOpen={setOpen}
-                />
             </form>
         </>
     );
@@ -272,14 +264,14 @@ export default function RowDialog({
     handleClose,
     selectedRow,
     setSelectedRow,
-    updateRowAction,
+    updateRow,
 }: {
     apiRef: RefObject<GridApi | null>;
     dialogOpen: boolean;
     handleClose: () => void;
     selectedRow: TableRow | null;
     setSelectedRow: Dispatch<SetStateAction<TableRow | null>>;
-    updateRowAction: any;
+    updateRow: any;
 }) {
     // store async submit function registered from the child
     const submitFnRef = useRef<(() => Promise<void>) | null>(null);
@@ -324,7 +316,7 @@ export default function RowDialog({
                         apiRef={apiRef}
                         row={selectedRow}
                         registerSubmit={registerSubmit}
-                        updateRowAction={updateRowAction}
+                        updateRow={updateRow}
                     />
                 )}
             </DialogContent>

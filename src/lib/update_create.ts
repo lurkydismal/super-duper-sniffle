@@ -1,9 +1,7 @@
-import db from "@/db";
 import { TableRowInsert } from "@/db/schema";
-import { ActionResult, DbTarget, parseRawTarget } from "@/lib/types";
+import { ActionResult } from "@/lib/types";
 import log from "@/utils/stdlog";
-import { validateRow } from "@/utils/validate";
-import { eq } from "drizzle-orm";
+import { rowSchema } from "@/utils/validate/schemas";
 
 type Input = {
     id?: number;
@@ -19,14 +17,11 @@ async function buildInsert(parsed: {
 }
 
 export async function save(
-    rawTarget: DbTarget,
     input: Input,
     opts: { isUpdate?: boolean } = {},
 ): Promise<ActionResult> {
     try {
-        const table = parseRawTarget(rawTarget);
-
-        const parsed = await validateRow({
+        const parsed = rowSchema.parse({
             id: input.id,
             content: input.content,
         });
@@ -36,13 +31,9 @@ export async function save(
         });
 
         if (opts.isUpdate) {
-            await db
-                .update(table)
-                .set(row)
-                .where(eq(table.id, parsed.id!))
-                .execute();
+            // TODO: Implement
         } else {
-            await db.insert(table).values(row).execute();
+            // TODO: Implement
         }
 
         return { ok: true };
@@ -53,15 +44,4 @@ export async function save(
             error: opts.isUpdate ? "Update error" : "Create error",
         };
     }
-}
-
-/* FormData parsing helper reused by both actions */
-
-export function parseForm(formData: FormData): Input {
-    const rawId = formData.get("id");
-    const id = rawId == null ? undefined : Number(rawId);
-    return {
-        id,
-        content: String(formData.get("content") ?? ""),
-    };
 }

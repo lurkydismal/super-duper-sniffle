@@ -10,14 +10,14 @@ import { useSnackbar } from "@/components/SnackbarProvider";
 
 export default function TableDataGrid<Row, EmptyRow>({
     emptyRow,
-    getRowsAction,
-    createRowAction,
-    updateRowAction,
+    getRows,
+    createRow,
+    updateRow,
 }: {
     emptyRow: EmptyRow;
-    getRowsAction: any;
-    createRowAction: any;
-    updateRowAction: any;
+    getRows: any;
+    createRow: any;
+    updateRow: any;
 }) {
     const { showError } = useSnackbar();
     const apiRef = useGridApiRef();
@@ -29,11 +29,11 @@ export default function TableDataGrid<Row, EmptyRow>({
     // Getting rows
     const _getRows = useCallback(async () => {
         try {
-            setCurrentRows(await getRowsAction());
+            setCurrentRows(await getRows());
         } catch (err) {
             showError(err);
         }
-    }, [getRowsAction]);
+    }, [getRows]);
 
     useEffect(() => {
         _getRows();
@@ -43,12 +43,12 @@ export default function TableDataGrid<Row, EmptyRow>({
     const _createRow = useCallback(
         async (content: string) => {
             try {
-                await createRowAction(content);
+                await createRow(content);
             } catch (err) {
                 log.error(err);
             }
         },
-        [createRowAction],
+        [createRow],
     );
 
     useEffect(() => {
@@ -120,7 +120,7 @@ export default function TableDataGrid<Row, EmptyRow>({
                 handleClose={handleClose}
                 selectedRow={selectedRow}
                 setSelectedRow={setSelectedRow}
-                updateRowAction={updateRowAction}
+                updateRow={updateRow}
             />
         </>
     );

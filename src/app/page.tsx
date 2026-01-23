@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/RootPageButton";
 import buttons from "@/data/RootPageButtons";
 
@@ -23,12 +25,22 @@ export default function Page() {
         ? "bg-gray-900 text-gray-100"
         : "bg-gray-50 text-gray-900";
 
+    const paragraphColor = isDark ? "text-gray-300" : "text-gray-600";
+
     return (
         <main
             className={`min-h-screen flex items-center justify-center ${containerBg} p-8`}
         >
             <div className="w-full max-w-3xl">
                 <h1 className="sr-only">Buttons</h1>
+
+                <div className="mb-6">
+                    <p className={paragraphColor}>
+                        Example buttons derived from an array of objects. The page checks{" "}
+                        <code className="rounded bg-slate-100 px-1 py-0.5 text-xs text-white dark:bg-slate-800">data-dark</code> on{" "}
+                        <code>{"<html>"}</code> to enable dark styling.
+                    </p>
+                </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {buttons.map((button) => (

@@ -1,13 +1,13 @@
+"use client";
+
 import TableDataGrid from "@/components/TableDataGrid";
 import { TableRow } from "@/db/schema";
-import { getRows } from "@/lib/get";
 import { create } from "@/lib/create";
+import { getRows } from "@/lib/get";
+import { update } from "@/lib/update";
 import log from "@/utils/stdlog";
-import { updateAction } from "@/lib/update";
 
-export default async function Page() {
-    const table = "table";
-
+export default function Page() {
     interface EmptyRow {
         content: string;
     }
@@ -16,10 +16,8 @@ export default async function Page() {
         content: "-",
     };
 
-    const getRowsAction = async () => {
-        "use server";
-
-        const result = await getRows(table);
+    const _getRows = async () => {
+        const result = await getRows();
 
         if (result.ok) {
             return result.data;
@@ -31,10 +29,8 @@ export default async function Page() {
         }
     };
 
-    const createRowAction = async (content: string) => {
-        "use server";
-
-        const result = await create(table, content);
+    const createRow = async (content: string) => {
+        const result = await create(content);
 
         if (!result.ok) {
             // handle/report error if needed
@@ -44,12 +40,8 @@ export default async function Page() {
         }
     };
 
-    const updateRowAction = async (fd: FormData) => {
-        "use server";
-
-        fd.set("target", table);
-
-        const result = await updateAction(fd);
+    const updateRow = async (id: number, content: string) => {
+        const result = await update(id, content);
 
         if (!result.ok) {
             // handle/report error if needed
@@ -64,9 +56,9 @@ export default async function Page() {
     return (
         <TableDataGrid<TableRow, EmptyRow>
             emptyRow={emptyRow}
-            getRowsAction={getRowsAction}
-            createRowAction={createRowAction}
-            updateRowAction={updateRowAction}
+            getRows={_getRows}
+            createRow={createRow}
+            updateRow={updateRow}
         />
     );
 }

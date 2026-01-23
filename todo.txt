@@ -1,0 +1,2 @@
+Implement row manipulations in dashboard/table
+Implement logic/map

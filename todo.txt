@@ -1,2 +1,6 @@
 Implement row manipulations in dashboard/table
+Implement logic/gettier
 Implement logic/map
+Implement social/blog
+Implement social/tasker
+Implement overview

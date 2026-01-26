@@ -194,6 +194,6 @@ export default function CustomToolbar({
             <CustomDivider />
 
             <CustomQuickFilter />
-        </Toolbar >
+        </Toolbar>
     );
 }

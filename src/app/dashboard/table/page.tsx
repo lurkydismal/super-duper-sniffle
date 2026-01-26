@@ -7,8 +7,11 @@ import { create } from "@/lib/create";
 import { getRows } from "@/lib/get";
 import { update } from "@/lib/update";
 import log from "@/utils/stdlog";
-import { Queue as MockShowIcon, AddBoxOutlined as AddIcon, } from '@mui/icons-material';
-import uuid from '@/utils/uuid';
+import {
+    Queue as MockShowIcon,
+    AddBoxOutlined as AddIcon,
+} from "@mui/icons-material";
+import uuid from "@/utils/uuid";
 import { ToolbarButton } from "@mui/x-data-grid";
 import CustomDivider from "@/components/CustomDivider";
 import { useSnackbar } from "@/components/SnackbarProvider";
@@ -24,7 +27,8 @@ function ExtraToolbarButtons({
     emptyRow: EmptyRow;
     createRow: any;
 }>) {
-    const { showMessage, showSuccess, showError, showWarning, showInfo } = useSnackbar();
+    const { showMessage, showSuccess, showError, showWarning, showInfo } =
+        useSnackbar();
 
     return (
         <>
@@ -40,7 +44,7 @@ function ExtraToolbarButtons({
                 >
                     <MockShowIcon fontSize="small" />
                 </ToolbarButton>
-            </Tooltip >
+            </Tooltip>
 
             <Tooltip title="Add new row">
                 <ToolbarButton
@@ -78,7 +82,7 @@ export default function Page() {
         }
     };
 
-    const createRow = async ({ content }: { content: string; }) => {
+    const createRow = async ({ content }: { content: string }) => {
         const result = await create(content);
 
         if (!result.ok) {
@@ -88,7 +92,13 @@ export default function Page() {
         }
     };
 
-    const updateRow = async ({ id, content, }: { id: number, content: string; }) => {
+    const updateRow = async ({
+        id,
+        content,
+    }: {
+        id: number;
+        content: string;
+    }) => {
         const result = await update(id, content);
 
         if (!result.ok) {
@@ -106,7 +116,12 @@ export default function Page() {
             getRows={_getRows}
             createRow={createRow}
             updateRow={updateRow}
-            extraButtons={<ExtraToolbarButtons emptyRow={emptyRow} createRow={createRow} />}
+            extraButtons={
+                <ExtraToolbarButtons
+                    emptyRow={emptyRow}
+                    createRow={createRow}
+                />
+            }
         />
     );
 }

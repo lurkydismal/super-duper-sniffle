@@ -7,9 +7,14 @@ import {
     WarningAmber as WarningIcon,
     LightbulbOutlined as InfoIcon,
     Close as CloseIcon,
-} from '@mui/icons-material';
-import { IconButton } from '@mui/material';
-import { SnackbarProvider, VariantType, enqueueSnackbar, closeSnackbar } from 'notistack';
+} from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import {
+    SnackbarProvider,
+    VariantType,
+    enqueueSnackbar,
+    closeSnackbar,
+} from "notistack";
 import { createContext, useContext } from "react";
 
 const SnackbarContext = createContext<{
@@ -50,27 +55,35 @@ export default function CustomSnackbarProvider({
     };
 
     const showMessage = (message: string) => {
-        _showMessage(message, 'default');
+        _showMessage(message, "default");
     };
 
     const showSuccess = (message: string) => {
-        _showMessage(message, 'success');
+        _showMessage(message, "success");
     };
 
     const showError = (err: unknown) => {
-        _showMessage(err, 'error');
+        _showMessage(err, "error");
     };
 
     const showWarning = (warn: unknown) => {
-        _showMessage(warn, 'warning');
+        _showMessage(warn, "warning");
     };
 
     const showInfo = (message: string) => {
-        _showMessage(message, 'info');
+        _showMessage(message, "info");
     };
 
     return (
-        <SnackbarContext.Provider value={{ showMessage, showSuccess, showError, showWarning, showInfo }}>
+        <SnackbarContext.Provider
+            value={{
+                showMessage,
+                showSuccess,
+                showError,
+                showWarning,
+                showInfo,
+            }}
+        >
             {children}
 
             <SnackbarProvider
@@ -84,8 +97,8 @@ export default function CustomSnackbarProvider({
                 }}
                 preventDuplicate
                 anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right',
+                    vertical: "bottom",
+                    horizontal: "right",
                 }}
                 action={(snackbarId) => (
                     <IconButton onClick={() => closeSnackbar(snackbarId)}>

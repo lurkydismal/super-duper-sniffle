@@ -48,7 +48,7 @@ export default function TableDataGrid<Row, EmptyRow>({
             try {
                 await createRow(content);
             } catch (err) {
-                log.error(err);
+                showError(err);
             }
         },
         [createRow],
@@ -59,7 +59,7 @@ export default function TableDataGrid<Row, EmptyRow>({
             if (!currentRows) return;
 
             try {
-                await _createRow(emptyRow.content);
+                await _createRow(emptyRow);
             } catch (err) {
                 showError(err);
             }

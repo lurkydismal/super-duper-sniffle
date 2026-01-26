@@ -1,7 +1,5 @@
 import { formatDate } from "@/utils/dayjs";
-import { Image as ImageIcon } from "@mui/icons-material";
 import {
-    Chip,
     Dialog,
     DialogContent,
     Divider,
@@ -47,8 +45,6 @@ function RowDialogContent({
 }) {
     const { showError } = useSnackbar();
     const [content, setContent] = useState<string | null>(row.content ?? null);
-    const [src, setSrc] = useState<string | null>(String(row.id));
-    const [open, setOpen] = useState(false);
 
     type FieldTypeMap = {
         text: string | null;
@@ -68,32 +64,10 @@ function RowDialogContent({
             setValue: setContent,
             name: "content",
         },
-        {
-            title: "Picture",
-            type: "image",
-            value: src,
-            setValue: setSrc,
-        },
     ];
 
     const renderValue = (field: (typeof fields)[0]) => {
         switch (field.type) {
-            case "image": {
-                return (
-                    <Chip
-                        icon={<ImageIcon />}
-                        label="Open image"
-                        size="medium"
-                        onClick={() => setOpen(true)}
-                        variant="outlined"
-                        sx={{
-                            p: "0.5rem",
-                            fontSize: "1.125rem",
-                        }}
-                    />
-                );
-            }
-
             case "multiline":
                 return (
                     <TextField

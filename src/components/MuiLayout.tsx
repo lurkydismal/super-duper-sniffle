@@ -1,6 +1,6 @@
 "use client";
 
-import { SnackbarProvider } from "@/components/SnackbarProvider";
+import SnackbarProvider from "@/components/SnackbarProvider";
 /**
  * RootLayout Component
  *

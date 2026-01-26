@@ -11,7 +11,6 @@ import {
     QuickFilterTrigger,
 } from "@mui/x-data-grid";
 import {
-    Divider,
     InputAdornment,
     Menu,
     MenuItem,
@@ -27,6 +26,7 @@ import {
     Cancel as CancelIcon,
 } from "@mui/icons-material";
 import { useState, useRef } from "react";
+import CustomDivider from "@/components/CustomDivider";
 
 type OwnerState = {
     expanded: boolean;
@@ -163,17 +163,6 @@ function CustomQuickFilter() {
                 )}
             />
         </StyledQuickFilter>
-    );
-}
-
-function CustomDivider() {
-    return (
-        <Divider
-            orientation="vertical"
-            variant="middle"
-            flexItem
-            sx={{ mx: 0.5 }}
-        />
     );
 }
 

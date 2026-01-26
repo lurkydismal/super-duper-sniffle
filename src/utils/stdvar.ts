@@ -52,7 +52,7 @@ export const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL ?? "/api";
  * Name of the application.
  * - Used in logging, UI, or headers.
  */
-export const appName = "template_next";
+export const appName = "super-duper-sniffle";
 
 /**
  * Version of the application.

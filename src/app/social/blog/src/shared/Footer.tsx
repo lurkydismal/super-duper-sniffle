@@ -1,14 +1,14 @@
-import * as React from 'react';
-import * as ReactRouter from 'react-router-dom';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { Copyright, githubUrl } from './Copyright';
+import * as React from "react";
+import * as ReactRouter from "react-router-dom";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import { Copyright, githubUrl } from "./Copyright";
 
 export default function Footer() {
     const navigate = ReactRouter.useNavigate();
@@ -18,18 +18,18 @@ export default function Footer() {
             <Divider />
             <Container
                 sx={{
-                    alignItems: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
+                    alignItems: "center",
+                    display: "flex",
+                    flexDirection: "column",
                     py: { xs: 1, sm: 2 },
-                    textAlign: { sm: 'center', md: 'left' },
+                    textAlign: { sm: "center", md: "left" },
                 }}
             >
                 <Box
                     sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        width: '100%',
+                        display: "flex",
+                        justifyContent: "space-between",
+                        width: "100%",
                     }}
                 >
                     <div>
@@ -44,7 +44,7 @@ export default function Footer() {
                             Privacy Policy
                         </Link>
                         <Typography
-                            sx={{ display: 'inline', mx: 0.5, opacity: 0.5 }}
+                            sx={{ display: "inline", mx: 0.5, opacity: 0.5 }}
                         >
                             &nbsp;•&nbsp;
                         </Typography>
@@ -63,7 +63,7 @@ export default function Footer() {
                     <Stack
                         direction="row"
                         spacing={1}
-                        sx={{ justifyContent: 'left', color: 'text.secondary' }}
+                        sx={{ justifyContent: "left", color: "text.secondary" }}
                         useFlexGap
                     >
                         <IconButton
@@ -71,7 +71,7 @@ export default function Footer() {
                             color="inherit"
                             href={githubUrl}
                             size="small"
-                            sx={{ alignSelf: 'center' }}
+                            sx={{ alignSelf: "center" }}
                         >
                             <GitHubIcon />
                         </IconButton>

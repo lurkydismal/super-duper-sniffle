@@ -15,9 +15,7 @@ export default function Page() {
         >
             <div className="w-full max-w-3xl">
                 <div className="mb-6">
-                    <p className={paragraphColor}>
-                        OVERVIEW
-                    </p>
+                    <p className={paragraphColor}>OVERVIEW</p>
                 </div>
             </div>
         </main>

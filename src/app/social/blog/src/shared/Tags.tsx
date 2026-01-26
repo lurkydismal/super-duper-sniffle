@@ -1,6 +1,6 @@
-import Box from '@mui/material/Box';
-import Chip from '@mui/material/Chip';
-import { SearchButtonMobile } from './SearchButton';
+import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
+import { SearchButtonMobile } from "./SearchButton";
 
 interface Tag {
     id: number;
@@ -10,7 +10,7 @@ interface Tag {
 // TODO: Implement
 const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     console.info(
-        'You clicked the filter chip. ',
+        "You clicked the filter chip. ",
         event.currentTarget.textContent,
     );
 };
@@ -19,10 +19,10 @@ export function Tags({ tags }: { tags: Tag[] }) {
     return (
         <Box
             sx={{
-                display: 'inline-flex',
-                flexDirection: 'row',
+                display: "inline-flex",
+                flexDirection: "row",
                 gap: 3,
-                overflow: 'auto',
+                overflow: "auto",
             }}
         >
             <Chip onClick={handleClick} size="medium" label="All categories" />
@@ -33,8 +33,8 @@ export function Tags({ tags }: { tags: Tag[] }) {
                     onClick={handleClick}
                     size="medium"
                     sx={{
-                        backgroundColor: 'transparent',
-                        border: 'none',
+                        backgroundColor: "transparent",
+                        border: "none",
                     }}
                 />
             ))}
@@ -46,13 +46,13 @@ export function TagsAndSearchMobile({ tags }: { tags: Tag[] }) {
     return (
         <Box
             sx={{
-                alignItems: { xs: 'start', md: 'center' },
-                display: 'flex',
-                flexDirection: { xs: 'column-reverse', md: 'row' },
+                alignItems: { xs: "start", md: "center" },
+                display: "flex",
+                flexDirection: { xs: "column-reverse", md: "row" },
                 gap: 4,
-                justifyContent: 'space-between',
-                overflow: 'auto',
-                width: '100%',
+                justifyContent: "space-between",
+                overflow: "auto",
+                width: "100%",
             }}
         >
             <Tags tags={tags}></Tags>

@@ -1,17 +1,17 @@
-import * as React from 'react';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import * as React from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
 const items = [
-    { panel: 'panel1', question: 'Question 1', answer: 'Answer 1' },
-    { panel: 'panel2', question: 'Question 2', answer: 'Answer 2' },
-    { panel: 'panel3', question: 'Question 3', answer: 'Answer 3' },
-    { panel: 'panel4', question: 'Question 4', answer: 'Answer 4' },
+    { panel: "panel1", question: "Question 1", answer: "Answer 1" },
+    { panel: "panel2", question: "Question 2", answer: "Answer 2" },
+    { panel: "panel3", question: "Question 3", answer: "Answer 3" },
+    { panel: "panel4", question: "Question 4", answer: "Answer 4" },
 ];
 
 function AccordionItem({
@@ -46,7 +46,7 @@ function AccordionItem({
             <AccordionDetails>
                 <Typography
                     gutterBottom
-                    sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+                    sx={{ maxWidth: { sm: "100%", md: "70%" } }}
                     variant="body2"
                 >
                     {answer}
@@ -72,12 +72,12 @@ export default function FAQ() {
         <Container
             id="faq"
             sx={{
-                alignItems: 'center',
-                display: 'flex',
-                flexDirection: 'column',
+                alignItems: "center",
+                display: "flex",
+                flexDirection: "column",
                 gap: { xs: 3, sm: 6 },
                 pb: { xs: 8, sm: 16 },
-                position: 'relative',
+                position: "relative",
                 pt: { xs: 4, sm: 12 },
             }}
         >
@@ -85,14 +85,14 @@ export default function FAQ() {
                 component="h2"
                 variant="h4"
                 sx={{
-                    color: 'text.primary',
-                    textAlign: { sm: 'left', md: 'center' },
-                    width: { sm: '100%', md: '60%' },
+                    color: "text.primary",
+                    textAlign: { sm: "left", md: "center" },
+                    width: { sm: "100%", md: "60%" },
                 }}
             >
                 Frequently asked questions
             </Typography>
-            <Box sx={{ width: '100%' }}>
+            <Box sx={{ width: "100%" }}>
                 {items.map((it) => (
                     <AccordionItem
                         key={it.panel}

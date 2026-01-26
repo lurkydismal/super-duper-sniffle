@@ -50,9 +50,7 @@ export default function MuiLayout({
                         </Box>
                     }
                 >
-                    <SnackbarProvider>
-                        {children}
-                    </SnackbarProvider>
+                    <SnackbarProvider>{children}</SnackbarProvider>
                 </Suspense>
             </Box>
         </AppTheme>

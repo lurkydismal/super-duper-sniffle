@@ -1,13 +1,13 @@
-import * as React from 'react';
-import * as ReactRouter from 'react-router-dom';
-import Box from '@mui/material/Box';
-import { Author, AuthorWithFollow } from '../../shared/Author';
-import PostsPagination from '../../shared/Pagination';
-import { Posts } from '../../shared/Posts';
-import { SearchButton } from '../../shared/SearchButton';
-import { TagsAndSearchMobile } from '../../shared/Tags';
-import { postsData, tags, user } from '../../shared/TestData';
-import { getCredentials, paginate } from '../../stdfunc';
+import * as React from "react";
+import * as ReactRouter from "react-router-dom";
+import Box from "@mui/material/Box";
+import { Author, AuthorWithFollow } from "../../shared/Author";
+import PostsPagination from "../../shared/Pagination";
+import { Posts } from "../../shared/Posts";
+import { SearchButton } from "../../shared/SearchButton";
+import { TagsAndSearchMobile } from "../../shared/Tags";
+import { postsData, tags, user } from "../../shared/TestData";
+import { getCredentials, paginate } from "../../stdfunc";
 
 // TODO: Fix avatar src
 export default function MainContent() {
@@ -39,20 +39,20 @@ export default function MainContent() {
 
     // TODO: Implement
     const onChange = (_: React.ChangeEvent<unknown>, page: number) => {
-        console.info('You clicked the pagination. ', page);
+        console.info("You clicked the pagination. ", page);
 
         setCurrentPage(page);
     };
 
     const properties = {
         author: { id, name: username, avatar: username },
-        variant: 'h2',
+        variant: "h2",
         avatarWidth: 48,
         avatarHeight: 48,
     } satisfies React.ComponentProps<typeof Author>;
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
             {isMeProfile ? (
                 <Author {...properties}></Author>
             ) : (

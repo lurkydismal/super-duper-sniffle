@@ -1,32 +1,32 @@
-import * as React from 'react';
-import * as ReactRouter from 'react-router-dom';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import MenuIcon from '@mui/icons-material/Menu';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import MenuItem from '@mui/material/MenuItem';
-import Toolbar from '@mui/material/Toolbar';
-import { alpha, styled } from '@mui/material/styles';
+import * as React from "react";
+import * as ReactRouter from "react-router-dom";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import MenuIcon from "@mui/icons-material/Menu";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import MenuItem from "@mui/material/MenuItem";
+import Toolbar from "@mui/material/Toolbar";
+import { alpha, styled } from "@mui/material/styles";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-    alignItems: 'center',
-    backdropFilter: 'blur(24px)',
+    alignItems: "center",
+    backdropFilter: "blur(24px)",
     backgroundColor: theme.vars
         ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
         : alpha(theme.palette.background.default, 0.4),
     borderColor: (theme.vars || theme).palette.divider,
     borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
     boxShadow: (theme.vars || theme).shadows[1],
-    pborder: '1px solid',
-    display: 'flex',
+    pborder: "1px solid",
+    display: "flex",
     flexShrink: 0,
-    justifyContent: 'space-between',
-    adding: '8px 12px',
+    justifyContent: "space-between",
+    adding: "8px 12px",
 }));
 
 export default function NavBar() {
@@ -42,10 +42,10 @@ export default function NavBar() {
             enableColorOnDark
             position="fixed"
             sx={{
-                backgroundImage: 'none',
-                bgcolor: 'transparent',
+                backgroundImage: "none",
+                bgcolor: "transparent",
                 boxShadow: 0,
-                mt: 'calc(var(--template-frame-height, 0px) + 28px)',
+                mt: "calc(var(--template-frame-height, 0px) + 28px)",
             }}
         >
             <Container maxWidth="lg">
@@ -53,18 +53,18 @@ export default function NavBar() {
                     <Box
                         sx={{
                             flexGrow: 1,
-                            display: 'flex',
-                            alignItems: 'center',
+                            display: "flex",
+                            alignItems: "center",
                             px: 0,
                         }}
                     >
-                        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                        <Box sx={{ display: { xs: "none", md: "flex" } }}>
                             <Button
                                 variant="text"
                                 color="info"
                                 size="small"
                                 onClick={() => {
-                                    navigate('/epistles');
+                                    navigate("/epistles");
                                 }}
                                 href="#"
                             >
@@ -75,7 +75,7 @@ export default function NavBar() {
                                 color="info"
                                 size="small"
                                 onClick={() => {
-                                    navigate('/follows');
+                                    navigate("/follows");
                                 }}
                                 href="#"
                             >
@@ -86,8 +86,8 @@ export default function NavBar() {
                     <Box
                         sx={{
                             paddingRight: 2,
-                            alignItems: 'center',
-                            display: { xs: 'none', md: 'flex' },
+                            alignItems: "center",
+                            display: { xs: "none", md: "flex" },
                             gap: 1,
                         }}
                     >
@@ -96,7 +96,7 @@ export default function NavBar() {
                             variant="contained"
                             size="small"
                             onClick={() => {
-                                navigate('/new-post');
+                                navigate("/new-post");
                             }}
                             href="#"
                         >
@@ -107,7 +107,7 @@ export default function NavBar() {
                             variant="contained"
                             size="small"
                             onClick={() => {
-                                navigate('/posts');
+                                navigate("/posts");
                             }}
                             href="#"
                         >
@@ -118,14 +118,14 @@ export default function NavBar() {
                             variant="contained"
                             size="small"
                             onClick={() => {
-                                navigate('/profile');
+                                navigate("/profile");
                             }}
                             href="#"
                         >
                             My profile
                         </Button>
                     </Box>
-                    <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
+                    <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1 }}>
                         <IconButton
                             aria-label="Menu button"
                             onClick={toggleDrawer(true)}
@@ -139,7 +139,7 @@ export default function NavBar() {
                             slotProps={{
                                 paper: {
                                     sx: {
-                                        top: 'var(--template-frame-height, 0px)',
+                                        top: "var(--template-frame-height, 0px)",
                                     },
                                 },
                             }}
@@ -147,13 +147,13 @@ export default function NavBar() {
                             <Box
                                 sx={{
                                     p: 1,
-                                    backgroundColor: 'background.default',
+                                    backgroundColor: "background.default",
                                 }}
                             >
                                 <Box
                                     sx={{
-                                        display: 'flex',
-                                        justifyContent: 'flex-end',
+                                        display: "flex",
+                                        justifyContent: "flex-end",
                                     }}
                                 >
                                     <IconButton onClick={toggleDrawer(false)}>
@@ -162,7 +162,7 @@ export default function NavBar() {
                                 </Box>
                                 <MenuItem
                                     onClick={() => {
-                                        navigate('/epistles');
+                                        navigate("/epistles");
                                     }}
                                     href="#"
                                 >
@@ -170,7 +170,7 @@ export default function NavBar() {
                                 </MenuItem>
                                 <MenuItem
                                     onClick={() => {
-                                        navigate('/follows');
+                                        navigate("/follows");
                                     }}
                                     href="#"
                                 >
@@ -182,7 +182,7 @@ export default function NavBar() {
                                         color="primary"
                                         variant="contained"
                                         onClick={() => {
-                                            navigate('/new-posts');
+                                            navigate("/new-posts");
                                         }}
                                         href="#"
                                         fullWidth
@@ -193,7 +193,7 @@ export default function NavBar() {
                                         color="primary"
                                         variant="contained"
                                         onClick={() => {
-                                            navigate('/posts');
+                                            navigate("/posts");
                                         }}
                                         href="#"
                                         fullWidth
@@ -204,7 +204,7 @@ export default function NavBar() {
                                         color="primary"
                                         variant="contained"
                                         onClick={() => {
-                                            navigate('/profile');
+                                            navigate("/profile");
                                         }}
                                         href="#"
                                         fullWidth

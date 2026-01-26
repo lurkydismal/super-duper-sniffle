@@ -1,5 +1,5 @@
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
 
 export const githubUrl = import.meta.env.VITE_GITHUB_LINK;
 
@@ -9,10 +9,10 @@ export function CopyrightAligned() {
             align="center"
             variant="body2"
             sx={{
-                color: 'text.secondary',
+                color: "text.secondary",
             }}
         >
-            {'Copyright © '}
+            {"Copyright © "}
             <Link color="inherit" href={githubUrl}>
                 LurkyDismal
             </Link>
@@ -26,11 +26,11 @@ export function Copyright() {
         <Typography
             variant="body2"
             sx={{
-                color: 'text.secondary',
+                color: "text.secondary",
                 mt: 1,
             }}
         >
-            {'Copyright © '}
+            {"Copyright © "}
             <Link color="inherit" href={githubUrl}>
                 LurkyDismal
             </Link>

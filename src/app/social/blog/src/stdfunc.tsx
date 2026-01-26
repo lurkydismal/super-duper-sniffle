@@ -1,17 +1,19 @@
-import axios, { AxiosRequestConfig } from 'axios';
-import { apiGateway, isDev } from './stdvar';
-import { user } from './shared/TestData';
-import { log } from './stdlog';
+import axios, { AxiosRequestConfig } from "axios";
+import { apiGateway, isDev } from "./stdvar";
+import { user } from "./shared/TestData";
+import { log } from "./stdlog";
 
-type Method = 'POST' | 'GET' | 'PUT' | 'DELETE';
+type Method = "POST" | "GET" | "PUT" | "DELETE";
 
 export async function sendRequest<T = any>(
     endpoint: string,
     data?: Record<string, any> | FormData,
-    method: Method = 'POST',
+    method: Method = "POST",
     devResponse?: T,
 ): Promise<T> {
-    log.trace(`${method} request to ${endpoint}${data ? ` with data: '${JSON.stringify(data)}'` : ""}`);
+    log.trace(
+        `${method} request to ${endpoint}${data ? ` with data: '${JSON.stringify(data)}'` : ""}`,
+    );
 
     if (isDev && devResponse) {
         log.debug(`Mock response: ${devResponse}`);
@@ -28,8 +30,8 @@ export async function sendRequest<T = any>(
             method,
             url: `${apiGateway}/${endpoint}`,
             headers: isFormData
-                ? { 'Content-Type': 'multipart/form-data' }
-                : { 'Content-Type': 'application/json' },
+                ? { "Content-Type": "multipart/form-data" }
+                : { "Content-Type": "application/json" },
             data: data,
         };
 
@@ -47,7 +49,9 @@ export async function sendRequest<T = any>(
 
         return response.data;
     } catch (error: any) {
-        log.trace(`Request failed: ${error?.response?.status || error.message}`);
+        log.trace(
+            `Request failed: ${error?.response?.status || error.message}`,
+        );
 
         throw error;
     }
@@ -71,7 +75,6 @@ export async function checkAuth(): Promise<boolean> {
     } catch {
         return false;
     }
-
 }
 
 interface UserCredentials {
@@ -81,15 +84,15 @@ interface UserCredentials {
 
 export function storeCredentials(credentials: UserCredentials) {
     if (isDev) {
-        log.debug('Skipping credential store in dev');
+        log.debug("Skipping credential store in dev");
 
         return;
     }
 
     log.debug(`Storing credentials for '${credentials.username}'`);
 
-    localStorage.setItem('id', String(credentials.id));
-    localStorage.setItem('username', credentials.username);
+    localStorage.setItem("id", String(credentials.id));
+    localStorage.setItem("username", credentials.username);
 }
 
 export function getCredentials(): UserCredentials {
@@ -99,11 +102,11 @@ export function getCredentials(): UserCredentials {
         return user;
     }
 
-    const id = localStorage.getItem('id');
-    const username = localStorage.getItem('username');
+    const id = localStorage.getItem("id");
+    const username = localStorage.getItem("username");
 
     if (!id || !username) {
-        log.error('Missing credentials');
+        log.error("Missing credentials");
 
         throw new Error(`Getting credentials failed`);
     }

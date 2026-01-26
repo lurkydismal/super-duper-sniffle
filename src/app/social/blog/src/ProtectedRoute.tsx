@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
-import { checkAuth } from './stdfunc';
-import { log } from './stdlog';
+import { useEffect, useState } from "react";
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import { checkAuth } from "./stdfunc";
+import { log } from "./stdlog";
 
 type Props = {
     drawDurationMs?: number;
@@ -13,14 +13,14 @@ type Props = {
 export default function LoadingScreen({ drawDurationMs = 4800 }: Props) {
     const textRef = React.useRef<SVGTextElement | null>(null);
     const [filled, setFilled] = React.useState(false);
-    const text = 'LOADING';
+    const text = "LOADING";
 
     React.useEffect(() => {
-        log.trace('LoadingScreen effect start');
+        log.trace("LoadingScreen effect start");
 
         const el = textRef.current;
         if (!el) {
-            log.warn('Text ref not found');
+            log.warn("Text ref not found");
 
             return;
         }
@@ -34,11 +34,11 @@ export default function LoadingScreen({ drawDurationMs = 4800 }: Props) {
             log.trace(`Computed text length: ${len}`);
 
             // set CSS variables used by styled component
-            el.style.setProperty('--len', String(Math.ceil(len)));
-            el.style.setProperty('--draw-duration', `${drawDurationMs}ms`);
+            el.style.setProperty("--len", String(Math.ceil(len)));
+            el.style.setProperty("--draw-duration", `${drawDurationMs}ms`);
 
             const t = setTimeout(() => {
-                setFilled(true), drawDurationMs + 80
+                (setFilled(true), drawDurationMs + 80);
 
                 log.trace(`${text} animation completed, filled set to true`);
             });
@@ -73,63 +73,63 @@ export default function LoadingScreen({ drawDurationMs = 4800 }: Props) {
 
 /* ---------- styled components ---------- */
 
-const Root = styled('div')({
-    position: 'fixed',
+const Root = styled("div")({
+    position: "fixed",
     inset: 0,
-    background: '#000',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    WebkitFontSmoothing: 'antialiased',
-    MozOsxFontSmoothing: 'grayscale',
+    background: "#000",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    WebkitFontSmoothing: "antialiased",
+    MozOsxFontSmoothing: "grayscale",
     zIndex: 9999,
     // allow svg strokes to overflow the container edges if needed
-    overflow: 'visible',
+    overflow: "visible",
 });
 
-const StyledSvg = styled('svg')({
-    width: 'min(80vw, 1200px)',
-    height: 'auto',
-    display: 'block',
+const StyledSvg = styled("svg")({
+    width: "min(80vw, 1200px)",
+    height: "auto",
+    display: "block",
     // ensure strokes that extend past viewBox are visible
-    overflow: 'visible',
+    overflow: "visible",
 });
 
 /**
  * Use explicit SVG coordinate sizes so getComputedTextLength matches the visual text.
  * viewBox is 1200x300 and fontSize is 200 (SVG units).
  */
-const LoadingText = styled('text')<{ filled: boolean }>(({ filled }) => ({
+const LoadingText = styled("text")<{ filled: boolean }>(({ filled }) => ({
     fontFamily:
         'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans"',
     fontWeight: 800,
     fontSize: 200, // SVG units (matches viewBox scale)
     // stroke/fill handled by runtime state
-    fill: filled ? '#ffffff' : 'none',
-    stroke: filled ? 'transparent' : '#ffffff',
+    fill: filled ? "#ffffff" : "none",
+    stroke: filled ? "transparent" : "#ffffff",
     strokeWidth: filled ? 0 : 8,
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
     // stroke-dash trick, --len set at runtime
-    strokeDasharray: 'var(--len, 2000)',
-    strokeDashoffset: 'var(--len, 2000)',
-    paintOrder: 'stroke fill',
-    transition: 'fill 220ms ease, stroke 220ms ease, stroke-width 220ms ease',
+    strokeDasharray: "var(--len, 2000)",
+    strokeDashoffset: "var(--len, 2000)",
+    paintOrder: "stroke fill",
+    transition: "fill 220ms ease, stroke 220ms ease, stroke-width 220ms ease",
     animation: filled
-        ? 'none'
-        : 'draw var(--draw-duration, 2400ms) cubic-bezier(.2,.9,.2,1) forwards',
+        ? "none"
+        : "draw var(--draw-duration, 2400ms) cubic-bezier(.2,.9,.2,1) forwards",
     // keyframes
-    '@keyframes draw': {
+    "@keyframes draw": {
         to: {
             strokeDashoffset: 0,
         },
     },
     // reduced motion
-    '@media (prefers-reduced-motion: reduce)': {
-        animation: 'none',
+    "@media (prefers-reduced-motion: reduce)": {
+        animation: "none",
         strokeDashoffset: 0,
-        fill: '#fff',
-        stroke: 'transparent',
+        fill: "#fff",
+        stroke: "transparent",
         strokeWidth: 0,
     },
 }));
@@ -138,36 +138,37 @@ export function ProtectedRoute() {
     const [authorized, setAuthorized] = useState<boolean | null>(null);
 
     useEffect(() => {
-        log.trace('ProtectedRoute: checking auth...');
+        log.trace("ProtectedRoute: checking auth...");
 
         checkAuth()
             .then((result) => {
                 log.trace(`Auth result: ${result}`);
 
                 setAuthorized(result);
-            }).catch((err) => {
+            })
+            .catch((err) => {
                 log.error(`Auth check failed: ${err}`);
 
                 setAuthorized(false);
-            });;
+            });
     }, []);
 
     // Not yet known
     if (authorized === null) {
-        log.trace('ProtectedRoute: auth status unknown, showing LoadingScreen');
+        log.trace("ProtectedRoute: auth status unknown, showing LoadingScreen");
 
-        return (<LoadingScreen />);
+        return <LoadingScreen />;
     }
 
     // Not authorized
     if (!authorized) {
-        log.trace('ProtectedRoute: user not authorized, redirecting to login');
+        log.trace("ProtectedRoute: user not authorized, redirecting to login");
 
-        return (<Navigate to="/auth/login" replace />);
+        return <Navigate to="/auth/login" replace />;
     }
 
     // Authorized
-    log.trace('ProtectedRoute: user authorized, rendering outlet');
+    log.trace("ProtectedRoute: user authorized, rendering outlet");
 
     return <Outlet />;
 }

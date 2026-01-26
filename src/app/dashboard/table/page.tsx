@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@mui/material";
 import TableDataGrid from "@/components/TableDataGrid";
 import { TableRow } from "@/db/schema";
 import { create } from "@/lib/create";
@@ -59,6 +60,14 @@ export default function Page() {
             getRows={_getRows}
             createRow={createRow}
             updateRow={updateRow}
+            extraButtons={
+                (
+                    <>
+                        <Button>Export</Button>
+                        <Button color="primary">Add</Button>
+                    </>
+                )
+            }
         />
     );
 }

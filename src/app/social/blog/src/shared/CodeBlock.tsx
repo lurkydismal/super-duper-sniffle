@@ -1,19 +1,19 @@
-import * as React from 'react';
-import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
+import * as React from "react";
+import { PrismAsync as SyntaxHighlighter } from "react-syntax-highlighter";
 // TODO: Maybe import Light version instead
 import {
     oneDark as darkTheme,
     oneLight as lightTheme,
-} from 'react-syntax-highlighter/dist/esm/styles/prism';
-import CheckIcon from '@mui/icons-material/Check';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Snackbar from '@mui/material/Snackbar';
-import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material/styles';
-import Mermaid from './Mermaid';
+} from "react-syntax-highlighter/dist/esm/styles/prism";
+import CheckIcon from "@mui/icons-material/Check";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Snackbar from "@mui/material/Snackbar";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
+import Mermaid from "./Mermaid";
 
 export default function CodeBlock({
     inline,
@@ -30,7 +30,7 @@ export default function CodeBlock({
     const theme = useTheme();
 
     // Detect language dynamically
-    const match = /language-(\w+)/.exec(className || '');
+    const match = /language-(\w+)/.exec(className || "");
 
     if (inline || !match) {
         return (
@@ -38,11 +38,11 @@ export default function CodeBlock({
                 {...props}
                 component="code"
                 sx={{
-                    fontSize: '0.875rem',
+                    fontSize: "0.875rem",
                     backgroundColor:
-                        theme.palette.mode === 'dark' ? 'grey.800' : 'grey.200',
+                        theme.palette.mode === "dark" ? "grey.800" : "grey.200",
                     color:
-                        theme.palette.mode === 'dark' ? 'grey.100' : 'grey.900',
+                        theme.palette.mode === "dark" ? "grey.100" : "grey.900",
                     borderRadius: 1,
                     px: 1,
                     py: 0,
@@ -55,13 +55,13 @@ export default function CodeBlock({
 
     const lang = match[1];
 
-    if (lang === 'mermaid') {
+    if (lang === "mermaid") {
         return <Mermaid chart={String(children).trim()} />;
     }
 
-    const text = Array.isArray(children) ? children.join('') : String(children);
+    const text = Array.isArray(children) ? children.join("") : String(children);
     const trimmed = text.trimEnd();
-    const lineAmount = trimmed.split('\n').length;
+    const lineAmount = trimmed.split("\n").length;
 
     const [copied, setCopied] = React.useState(false);
 
@@ -91,30 +91,30 @@ export default function CodeBlock({
         <Box position="relative" sx={{ mt: 2, mb: 2 }}>
             <Box
                 sx={{
-                    alignItems: 'center',
-                    display: 'flex',
+                    alignItems: "center",
+                    display: "flex",
                     gap: 1,
-                    position: 'absolute',
+                    position: "absolute",
                     right: 8,
                     top: 8,
                     zIndex: 3,
                 }}
             >
-                <Tooltip title={copied ? 'Copied' : 'Copy'} arrow>
+                <Tooltip title={copied ? "Copied" : "Copy"} arrow>
                     <IconButton
                         aria-label="Copy code"
                         onClick={() => copyToClipboard(trimmed)}
                         size="small"
                         sx={{
                             bgcolor:
-                                theme.palette.mode === 'dark'
-                                    ? 'rgba(255,255,255,0.04)'
-                                    : 'rgba(0,0,0,0.04)',
-                            '&:hover': {
+                                theme.palette.mode === "dark"
+                                    ? "rgba(255,255,255,0.04)"
+                                    : "rgba(0,0,0,0.04)",
+                            "&:hover": {
                                 bgcolor:
-                                    theme.palette.mode === 'dark'
-                                        ? 'rgba(255,255,255,0.06)'
-                                        : 'rgba(0,0,0,0.08)',
+                                    theme.palette.mode === "dark"
+                                        ? "rgba(255,255,255,0.06)"
+                                        : "rgba(0,0,0,0.08)",
                             },
                         }}
                     >
@@ -131,12 +131,12 @@ export default function CodeBlock({
                 PreTag="div"
                 language={lang}
                 showLineNumbers={lineAmount > 1}
-                style={theme.palette.mode === 'dark' ? darkTheme : lightTheme}
+                style={theme.palette.mode === "dark" ? darkTheme : lightTheme}
             >
                 {trimmed}
             </SyntaxHighlighter>
             <Snackbar
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                 autoHideDuration={2000}
                 message="Copied to clipboard"
                 onClose={() => setCopied(false)}
@@ -145,15 +145,15 @@ export default function CodeBlock({
                     content: {
                         sx: {
                             backgroundColor:
-                                theme.palette.mode === 'dark'
+                                theme.palette.mode === "dark"
                                     ? theme.palette.grey[800]
                                     : theme.palette.grey[200],
                             color:
-                                theme.palette.mode === 'dark'
+                                theme.palette.mode === "dark"
                                     ? theme.palette.grey[100]
                                     : theme.palette.grey[900],
                             border: `1px solid ${
-                                theme.palette.mode === 'dark'
+                                theme.palette.mode === "dark"
                                     ? theme.palette.grey[700]
                                     : theme.palette.grey[300]
                             }`,

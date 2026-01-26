@@ -2,23 +2,26 @@
 
 import CustomizedDataGrid from "@/components/CustomizedDataGrid";
 import columns from "@/data/table/columns";
-import { GridRowParams, GridRowsProp, useGridApiRef } from "@mui/x-data-grid";
 import { useCallback, useEffect, useState } from "react";
 import RowDialog from "./RowDialog";
 import log from "@/utils/stdlog";
 import { useSnackbar } from "@/components/SnackbarProvider";
+import CustomToolbar from "./Toolbar";
+import { useGridApiRef, GridRowsProp, GridRowParams } from "@mui/x-data-grid";
 
 export default function TableDataGrid<Row, EmptyRow>({
     emptyRow,
     getRows,
     createRow,
     updateRow,
-}: {
+    extraButtons,
+}: Readonly<{
     emptyRow: EmptyRow;
     getRows: any;
     createRow: any;
     updateRow: any;
-}) {
+    extraButtons?: React.ReactNode;
+}>) {
     const { showError } = useSnackbar();
     const apiRef = useGridApiRef();
     const [currentRows, setCurrentRows] =
@@ -112,6 +115,12 @@ export default function TableDataGrid<Row, EmptyRow>({
                     },
                 }}
                 onRowClick={handleRowClick}
+                slots={{ toolbar: CustomToolbar }}
+                slotProps={{
+                    toolbar: {
+                        extraButtons,
+                    },
+                }}
             />
 
             <RowDialog

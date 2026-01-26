@@ -68,9 +68,7 @@ export default function RootLayout({
                 <InitColorSchemeScript attribute="data" />
 
                 <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-                    <MuiLayout>
-                        {children}
-                    </MuiLayout>
+                    <MuiLayout>{children}</MuiLayout>
                 </AppRouterCacheProvider>
             </body>
         </html>

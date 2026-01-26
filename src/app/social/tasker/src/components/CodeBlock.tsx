@@ -166,8 +166,7 @@ export default function CodeBlock({
                             }),
                             (theme) =>
                                 theme.applyStyles("dark", {
-                                    backgroundColor:
-                                        gray[800],
+                                    backgroundColor: gray[800],
                                     color: gray[100],
                                     border: `1px solid ${gray[700]}`,
                                 }),

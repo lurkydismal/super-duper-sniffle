@@ -1,1 +1,3 @@
-export type ActionResult = { ok: true, data?: any } | { ok: false; error: string };
+export type ActionResult =
+    | { ok: true; data?: any }
+    | { ok: false; error: string };

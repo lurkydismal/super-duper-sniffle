@@ -1,13 +1,13 @@
-import * as React from 'react';
-import * as ReactRouter from 'react-router-dom';
-import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
-import { Author, AuthorWithFollowAndLink } from '../../shared/Author';
-import MainFallback from '../../shared/MainFallback';
-import { Post } from '../../shared/Posts';
+import * as React from "react";
+import * as ReactRouter from "react-router-dom";
+import NavigateNextRoundedIcon from "@mui/icons-material/NavigateNextRounded";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
+import { Author, AuthorWithFollowAndLink } from "../../shared/Author";
+import MainFallback from "../../shared/MainFallback";
+import { Post } from "../../shared/Posts";
 
 export interface Follow {
     author: Author;
@@ -15,47 +15,47 @@ export interface Follow {
 }
 
 const StyledTypography = styled(Typography)({
-    WebkitBoxOrient: 'vertical',
+    WebkitBoxOrient: "vertical",
     WebkitLineClamp: 2,
-    display: '-webkit-box',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
+    display: "-webkit-box",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
 });
 
 const TitleTypography = styled(Typography)(({ theme }) => ({
-    '&:hover': { cursor: 'pointer' },
-    position: 'relative',
-    textDecoration: 'none',
-    '& .arrow': {
-        position: 'absolute',
+    "&:hover": { cursor: "pointer" },
+    position: "relative",
+    textDecoration: "none",
+    "& .arrow": {
+        position: "absolute",
         right: 0,
-        top: '50%',
-        transform: 'translateY(-50%)',
-        visibility: 'hidden',
+        top: "50%",
+        transform: "translateY(-50%)",
+        visibility: "hidden",
     },
-    '&:hover .arrow': {
+    "&:hover .arrow": {
         opacity: 0.7,
-        visibility: 'visible',
+        visibility: "visible",
     },
-    '&:focus-visible': {
-        borderRadius: '8px',
-        outline: '3px solid',
-        outlineColor: 'hsla(210, 98%, 48%, 0.5)',
-        outlineOffset: '3px',
+    "&:focus-visible": {
+        borderRadius: "8px",
+        outline: "3px solid",
+        outlineColor: "hsla(210, 98%, 48%, 0.5)",
+        outlineOffset: "3px",
     },
-    '&::before': {
+    "&::before": {
         backgroundColor: (theme.vars || theme).palette.text.primary,
         bottom: 0,
         content: '""',
-        height: '1px',
+        height: "1px",
         left: 0,
         opacity: 0.3,
-        position: 'absolute',
-        transition: 'width 0.3s ease, opacity 0.3s ease',
+        position: "absolute",
+        transition: "width 0.3s ease, opacity 0.3s ease",
         width: 0,
     },
-    '&:hover::before': {
-        width: '100%',
+    "&:hover::before": {
+        width: "100%",
     },
 }));
 
@@ -88,15 +88,15 @@ export function Follows({ follows }: { follows: Follow[] }) {
                                 sx={{
                                     borderRadius: 1,
                                     boxShadow:
-                                        '0 0 24px 12px hsla(210, 100%, 25%, 0.2)',
+                                        "0 0 24px 12px hsla(210, 100%, 25%, 0.2)",
                                     paddingLeft: 1,
                                     paddingRight: 1,
                                     paddingBottom: 1,
 
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    height: '100%',
-                                    justifyContent: 'space-between',
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: "100%",
+                                    justifyContent: "space-between",
                                 }}
                             >
                                 <AuthorWithFollowAndLink
@@ -110,8 +110,8 @@ export function Follows({ follows }: { follows: Follow[] }) {
                                     }}
                                     className={
                                         focusedCardIndex === index
-                                            ? 'Mui-focused'
-                                            : ''
+                                            ? "Mui-focused"
+                                            : ""
                                     }
                                     gutterBottom
                                     onBlur={handleBlur}
@@ -121,7 +121,7 @@ export function Follows({ follows }: { follows: Follow[] }) {
                                     {post.title}
                                     <NavigateNextRoundedIcon
                                         className="arrow"
-                                        sx={{ fontSize: '1rem' }}
+                                        sx={{ fontSize: "1rem" }}
                                     />
                                 </TitleTypography>
                                 <StyledTypography

@@ -7,9 +7,13 @@ export function enableInterceptors() {
 
     axios.interceptors.request.use((config) => {
         const data = config.data ? `: '${JSON.stringify(config.data)}'` : "";
-        const parameters = config.params ? `: '${JSON.stringify(config.params)}'` : "";
+        const parameters = config.params
+            ? `: '${JSON.stringify(config.params)}'`
+            : "";
 
-        log.debug(`${config.url} ${config.method?.toUpperCase()}${data}${parameters}`);
+        log.debug(
+            `${config.url} ${config.method?.toUpperCase()}${data}${parameters}`,
+        );
 
         return config;
     });
@@ -23,7 +27,9 @@ export function enableInterceptors() {
         (err) => {
             const data = err?.response?.data;
 
-            log.error(`${err?.config?.url} ${err?.response?.status}${data ? `: '${data}'` : ""}`);
+            log.error(
+                `${err?.config?.url} ${err?.response?.status}${data ? `: '${data}'` : ""}`,
+            );
 
             return Promise.reject(err);
         },

@@ -1,17 +1,17 @@
-import * as React from 'react';
-import CreditCardRoundedIcon from '@mui/icons-material/CreditCardRounded';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import InputAdornment from '@mui/material/InputAdornment';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Stack from '@mui/material/Stack';
+import * as React from "react";
+import CreditCardRoundedIcon from "@mui/icons-material/CreditCardRounded";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import InputAdornment from "@mui/material/InputAdornment";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import Stack from "@mui/material/Stack";
 
 export default function Attachments() {
-    const [cardNumber, setCardNumber] = React.useState('');
+    const [cardNumber, setCardNumber] = React.useState("");
 
     const handleCardNumberChange = (event: { target: { value: string } }) => {
-        const value = event.target.value.replace(/\D/g, '');
-        const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+        const value = event.target.value.replace(/\D/g, "");
+        const formattedValue = value.replace(/(\d{4})(?=\d)/g, "$1 ");
         if (value.length <= 16) {
             setCardNumber(formattedValue);
         }
@@ -19,15 +19,15 @@ export default function Attachments() {
 
     return (
         <Stack spacing={{ xs: 3, sm: 6 }} useFlexGap>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                 <Card>
                     <Box
                         sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
+                            display: "flex",
+                            flexDirection: "column",
                             gap: 2,
-                            justifyContent: 'space-between',
-                            width: '100%',
+                            justifyContent: "space-between",
+                            width: "100%",
                             flexGrow: 1,
                         }}
                     >

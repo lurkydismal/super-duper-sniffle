@@ -1,12 +1,12 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import PostsPagination from '../../shared/Pagination';
-import { SearchButton } from '../../shared/SearchButton';
-import { TagsAndSearchMobile } from '../../shared/Tags';
-import { follows, tags } from '../../shared/TestData';
-import { paginate } from '../../stdfunc';
-import { Follows } from './Follows';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import PostsPagination from "../../shared/Pagination";
+import { SearchButton } from "../../shared/SearchButton";
+import { TagsAndSearchMobile } from "../../shared/Tags";
+import { follows, tags } from "../../shared/TestData";
+import { paginate } from "../../stdfunc";
+import { Follows } from "./Follows";
 
 export default function MainContent() {
     const [currentPage, setCurrentPage] = React.useState(1);
@@ -17,7 +17,7 @@ export default function MainContent() {
     };
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             <div>
                 <Typography variant="h2" gutterBottom>
                     Follows

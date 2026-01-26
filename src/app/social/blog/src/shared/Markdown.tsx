@@ -1,24 +1,24 @@
-import ReactMarkdown from 'react-markdown';
-import rehypeKatex from 'rehype-katex';
-import remarkGFM from 'remark-gfm';
-import remarkMath from 'remark-math';
-import Box from '@mui/material/Box';
-import CardMedia from '@mui/material/CardMedia';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import Link from '@mui/material/Link';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
-import CodeBlock from './CodeBlock';
+import ReactMarkdown from "react-markdown";
+import rehypeKatex from "rehype-katex";
+import remarkGFM from "remark-gfm";
+import remarkMath from "remark-math";
+import Box from "@mui/material/Box";
+import CardMedia from "@mui/material/CardMedia";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
+import Link from "@mui/material/Link";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Typography from "@mui/material/Typography";
+import CodeBlock from "./CodeBlock";
 
 const MarkdownComponents = {
     // Code
@@ -88,10 +88,10 @@ const MarkdownComponents = {
         <Typography
             component="blockquote"
             sx={{
-                borderLeft: '4px solid',
+                borderLeft: "4px solid",
                 paddingLeft: 2,
-                color: 'text.secondary',
-                fontStyle: 'italic',
+                color: "text.secondary",
+                fontStyle: "italic",
             }}
         >
             {children}
@@ -99,17 +99,17 @@ const MarkdownComponents = {
     ),
 
     // Horizontal rule
-    hr: () => <Divider sx={{ borderColor: '#ccc', margin: '16px 0' }} />,
+    hr: () => <Divider sx={{ borderColor: "#ccc", margin: "16px 0" }} />,
 
     // Image
     img: ({ src, alt }: any) => (
         <Container
             sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                height: '100%',
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "100%",
             }}
         >
             <CardMedia
@@ -117,8 +117,8 @@ const MarkdownComponents = {
                 image={src}
                 alt={alt}
                 sx={{
-                    minWidth: '10%',
-                    maxWidth: '50%',
+                    minWidth: "10%",
+                    maxWidth: "50%",
                     borderRadius: 4,
                 }}
             />
@@ -147,15 +147,15 @@ export default function Markdown({ children }: { children: string }) {
     return (
         <Box
             sx={{
-                typography: 'subtitle1',
-                '& math': {
-                    fontSize: '1.8rem',
+                typography: "subtitle1",
+                "& math": {
+                    fontSize: "1.8rem",
                 },
             }}
         >
             <ReactMarkdown
                 remarkPlugins={[remarkGFM, remarkMath]}
-                rehypePlugins={[[rehypeKatex, { output: 'mathml' }]]}
+                rehypePlugins={[[rehypeKatex, { output: "mathml" }]]}
                 components={{ ...MarkdownComponents }}
             >
                 {children}

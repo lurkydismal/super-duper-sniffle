@@ -36,9 +36,12 @@ export default function Page() {
 
                 <div className="mb-6">
                     <p className={paragraphColor}>
-                        Example buttons derived from an array of objects. The page checks{" "}
-                        <code className="rounded bg-slate-100 px-1 py-0.5 text-xs text-white dark:bg-slate-800">data-dark</code> on{" "}
-                        <code>{"<html>"}</code> to enable dark styling.
+                        Example buttons derived from an array of objects. The
+                        page checks{" "}
+                        <code className="rounded bg-slate-100 px-1 py-0.5 text-xs text-white dark:bg-slate-800">
+                            data-dark
+                        </code>{" "}
+                        on <code>{"<html>"}</code> to enable dark styling.
                     </p>
                 </div>
 

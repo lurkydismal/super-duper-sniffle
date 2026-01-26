@@ -8,7 +8,7 @@ export type TableRow = {
 };
 
 export type TableRowInsert = {
-    id?: number | undefined
+    id?: number | undefined;
     content: string;
     created_at?: Dayjs | undefined;
     updated_at?: Dayjs | undefined;

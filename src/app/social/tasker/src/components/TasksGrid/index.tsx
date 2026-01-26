@@ -21,9 +21,9 @@ import {
     Divider,
 } from "@mui/material";
 import columns from "./columns";
-import Markdown from '@/components/Markdown';
+import Markdown from "@/components/Markdown";
 
-type TasksGridProps = Omit<DataGridProps, 'columns'> & {
+type TasksGridProps = Omit<DataGridProps, "columns"> & {
     rows: GridRowsProp;
     statusSearchFilter?: string;
 };
@@ -49,14 +49,14 @@ export default function TasksGrid({
     const [filterModel, setFilterModel] = React.useState<GridFilterModel>(() =>
         statusSearchFilter
             ? {
-                items: [
-                    {
-                        field: "status",
-                        operator: "equals",
-                        value: statusSearchFilter,
-                    },
-                ],
-            }
+                  items: [
+                      {
+                          field: "status",
+                          operator: "equals",
+                          value: statusSearchFilter,
+                      },
+                  ],
+              }
             : { items: [] },
     );
 
@@ -129,7 +129,7 @@ export default function TasksGrid({
         if (!row) return null;
 
         return (
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                 {/*<AuthorsWithDateAndLink {...properties} />*/}
                 <Typography variant="subtitle1" component="div">
                     {row.tag}
@@ -197,7 +197,7 @@ export default function TasksGrid({
                     </IconButton>
                 </DialogTitle>
                 <DialogContent dividers>
-                    {selectedRow && (
+                    {selectedRow &&
                         /*
                         <Box sx={{ mt: 1 }}>
                             <Grid container spacing={1}>
@@ -221,8 +221,7 @@ export default function TasksGrid({
                             </Grid>
                         </Box>
                         */
-                        renderSelectedRow(selectedRow)
-                    )}
+                        renderSelectedRow(selectedRow)}
                 </DialogContent>
             </Dialog>
         </>

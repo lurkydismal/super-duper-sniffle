@@ -8,9 +8,7 @@ export default function Page() {
     return (
         <div className="w-full max-w-3xl">
             <div className="mb-6">
-                <p className={paragraphColor}>
-                    MAP
-                </p>
+                <p className={paragraphColor}>MAP</p>
             </div>
         </div>
     );

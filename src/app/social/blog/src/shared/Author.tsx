@@ -1,13 +1,13 @@
-import * as React from 'react';
-import * as ReactRouter from 'react-router-dom';
-import Avatar from '@mui/material/Avatar';
-import AvatarGroup from '@mui/material/AvatarGroup';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
-import { TypographyVariant } from '@mui/material/styles';
-import FollowButton from '../shared/FollowButton';
-import { log } from '../stdlog';
+import * as React from "react";
+import * as ReactRouter from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import AvatarGroup from "@mui/material/AvatarGroup";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import { TypographyVariant } from "@mui/material/styles";
+import FollowButton from "../shared/FollowButton";
+import { log } from "../stdlog";
 
 export interface Author {
     id: number;
@@ -28,12 +28,12 @@ function AuthorRow({
     return (
         <Box
             sx={{
-                alignItems: 'center',
-                display: 'flex',
-                flexDirection: 'row',
+                alignItems: "center",
+                display: "flex",
+                flexDirection: "row",
                 gap: 2,
-                justifyContent: 'space-between',
-                padding: '16px',
+                justifyContent: "space-between",
+                padding: "16px",
             }}
         >
             {left}
@@ -45,7 +45,7 @@ function AuthorRow({
 // Helper: single author avatar + name.
 function AuthorInfo({
     author,
-    variant = 'caption',
+    variant = "caption",
     avatarWidth = 24,
     avatarHeight = 24,
 }: {
@@ -54,15 +54,17 @@ function AuthorInfo({
     avatarWidth?: number;
     avatarHeight?: number;
 }) {
-    log.trace(`Rendering AuthorInfo: ${{ author, variant, avatarWidth, avatarHeight }}`);
+    log.trace(
+        `Rendering AuthorInfo: ${{ author, variant, avatarWidth, avatarHeight }}`,
+    );
 
     return (
         <Box
             sx={{
-                display: 'flex',
-                flexDirection: 'row',
+                display: "flex",
+                flexDirection: "row",
                 gap: 1,
-                alignItems: 'center',
+                alignItems: "center",
             }}
         >
             <Avatar
@@ -78,7 +80,7 @@ function AuthorInfo({
 // Helper: multiple authors (AvatarGroup + names).
 function AuthorsInfo({
     authors,
-    variant = 'caption',
+    variant = "caption",
     avatarWidth = 24,
     avatarHeight = 24,
 }: {
@@ -87,15 +89,17 @@ function AuthorsInfo({
     avatarWidth?: number;
     avatarHeight?: number;
 }) {
-    log.trace(`Rendering AuthorsInfo: ${{ authors, variant, avatarWidth, avatarHeight }}`);
+    log.trace(
+        `Rendering AuthorsInfo: ${{ authors, variant, avatarWidth, avatarHeight }}`,
+    );
 
     return (
         <Box
             sx={{
-                display: 'flex',
-                flexDirection: 'row',
+                display: "flex",
+                flexDirection: "row",
                 gap: 1,
-                alignItems: 'center',
+                alignItems: "center",
             }}
         >
             <AvatarGroup max={3}>
@@ -109,7 +113,7 @@ function AuthorsInfo({
                 ))}
             </AvatarGroup>
             <Typography variant={variant}>
-                {authors.map((author) => author.name).join(', ')}
+                {authors.map((author) => author.name).join(", ")}
             </Typography>
         </Box>
     );
@@ -197,11 +201,11 @@ export function AuthorWithDate({
                 />
             }
             right={
-                <Typography variant={variant ?? 'caption'}>
-                    {date.toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric',
+                <Typography variant={variant ?? "caption"}>
+                    {date.toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
                     })}
                 </Typography>
             }
@@ -243,11 +247,11 @@ export function AuthorWithDateAndLink({
                 </Link>
             }
             right={
-                <Typography variant={variant ?? 'caption'}>
-                    {date.toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric',
+                <Typography variant={variant ?? "caption"}>
+                    {date.toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
                     })}
                 </Typography>
             }
@@ -277,10 +281,10 @@ export function AuthorsWithDateAndLink({
             left={
                 <Box
                     sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
+                        display: "flex",
+                        flexDirection: "row",
                         gap: 1,
-                        alignItems: 'center',
+                        alignItems: "center",
                     }}
                 >
                     {/* Stack avatars, each wrapped in a Link */}
@@ -310,18 +314,18 @@ export function AuthorsWithDateAndLink({
                                 >
                                     {author.name}
                                 </Link>
-                                {index < authors.length - 1 && ', '}
+                                {index < authors.length - 1 && ", "}
                             </React.Fragment>
                         ))}
                     </Typography>
                 </Box>
             }
             right={
-                <Typography variant={variant ?? 'caption'}>
-                    {date.toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric',
+                <Typography variant={variant ?? "caption"}>
+                    {date.toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
                     })}
                 </Typography>
             }
@@ -355,11 +359,11 @@ export function AuthorsWithDate({
                 />
             }
             right={
-                <Typography variant={variant ?? 'caption'}>
-                    {date.toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric',
+                <Typography variant={variant ?? "caption"}>
+                    {date.toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
                     })}
                 </Typography>
             }

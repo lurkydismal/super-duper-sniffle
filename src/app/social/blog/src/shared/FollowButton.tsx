@@ -1,6 +1,6 @@
-import FollowIcon from '@mui/icons-material/PersonAdd';
-import UnollowIcon from '@mui/icons-material/PersonRemove';
-import Button from '@mui/material/Button';
+import FollowIcon from "@mui/icons-material/PersonAdd";
+import UnollowIcon from "@mui/icons-material/PersonRemove";
+import Button from "@mui/material/Button";
 
 export default function Follow({
     id,
@@ -9,19 +9,19 @@ export default function Follow({
 }: {
     id: number;
     doesFollow: boolean;
-    size?: 'small' | 'medium' | 'large';
+    size?: "small" | "medium" | "large";
 }) {
     return (
         <Button
-            size={size ?? 'small'}
+            size={size ?? "small"}
             onClick={() => {
-                console.log('Follow: ', id);
+                console.log("Follow: ", id);
             }}
-            color={doesFollow ? 'error' : 'success'}
+            color={doesFollow ? "error" : "success"}
             variant="contained"
             startIcon={doesFollow ? <UnollowIcon /> : <FollowIcon />}
         >
-            {doesFollow ? 'Unfollow' : 'Follow'}
+            {doesFollow ? "Unfollow" : "Follow"}
         </Button>
     );
 }

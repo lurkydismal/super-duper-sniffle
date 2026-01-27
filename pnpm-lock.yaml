@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@babel/parser':
+        specifier: ^7.28.6
+        version: 7.28.6
       '@codemirror/lang-javascript':
         specifier: ^6.2.4
         version: 6.2.4

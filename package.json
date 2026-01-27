@@ -16,6 +16,7 @@
         "format:check": "prettier --check \"src/**/*.{js,ts,jsx,tsx,json,css,scss,md}\""
     },
     "dependencies": {
+        "@babel/parser": "^7.28.6",
         "@codemirror/lang-javascript": "^6.2.4",
         "@emotion/cache": "^11.14.0",
         "@emotion/styled": "^11.14.1",

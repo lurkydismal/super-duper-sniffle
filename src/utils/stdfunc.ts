@@ -86,7 +86,7 @@ export function toCamelCase(header: string): string {
 
 // TODO: Document
 // Type guard for Record<string, any>
-function isRecord(input: unknown): input is Record<string, any> {
+export function isRecord(input: unknown): input is Record<string, any> {
     if (typeof input !== "object" || input === null) return false;
 
     const proto = Object.getPrototypeOf(input);
@@ -150,4 +150,65 @@ export function delay(milliseconds: number): Promise<void> {
     const safeMs = Math.floor(ms);
 
     return new Promise((resolve) => setTimeout(resolve, safeMs));
+}
+
+// TODO: Document
+export function randomImage(id: string, width: number = 800, height: number = 450) {
+    return `https://picsum.photos/${width}/${height}?random=${id}`;
+}
+
+// TODO: Document
+export type Area = {
+    x: number; // in % of image width
+    y: number; // in % of image height
+    size: number; // side length in % of image width/height
+};
+
+export function hasOverlap(a: Area, b: Area): boolean {
+    return !(
+        a.x + a.size <= b.x ||
+        b.x + b.size <= a.x ||
+        a.y + a.size <= b.y ||
+        b.y + b.size <= a.y
+    );
+}
+
+// Generate random square areas (percent coords)
+export function generateRandomAreas(
+    count = 4,
+    minSize = 5,
+    maxSize = 20,
+    maxAttempts = 100,
+): Area[] {
+    const areas: Area[] = [];
+
+    for (let i = 0; i < count; i++) {
+        let placed = false;
+
+        for (let attempt = 0; attempt < maxAttempts; attempt++) {
+            const size = Math.random() * (maxSize - minSize) + minSize;
+            const x = Math.random() * (100 - size);
+            const y = Math.random() * (100 - size);
+
+            const candidate: Area = { x, y, size };
+
+            const _hasOverlap = areas.some(area =>
+                hasOverlap(candidate, area)
+            );
+
+            if (!_hasOverlap) {
+                areas.push(candidate);
+                placed = true;
+                break;
+            }
+        }
+
+        // If we fail too many times, stop trying
+        if (!placed) {
+            console.warn("Could not place all areas without overlap");
+            break;
+        }
+    }
+
+    return areas;
 }

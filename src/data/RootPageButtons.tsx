@@ -9,14 +9,9 @@ const buttons: ButtonDefinition[] = [
         href: "/overview",
     },
     {
-        name: "Blog",
-        color: "info",
-        href: "/social/blog",
-    },
-    {
-        name: "Tasker",
-        color: "warning",
-        href: "/social/tasker",
+        name: "Gettier",
+        color: "error",
+        href: "/logic/gettier",
     },
     {
         name: "Table",
@@ -25,13 +20,18 @@ const buttons: ButtonDefinition[] = [
     },
     {
         name: "Map",
-        color: "success",
+        color: "info",
         href: "/logic/map",
     },
     {
-        name: "Gettier",
-        color: "error",
-        href: "/logic/gettier",
+        name: "Tasker",
+        color: "success",
+        href: "/social/tasker",
+    },
+    {
+        name: "Blog",
+        color: "warning",
+        href: "/social/blog",
     },
 ];
 

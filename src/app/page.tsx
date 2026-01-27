@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/RootPageButton";
 import buttons from "@/data/RootPageButtons";
+import { useHtmlDataDark } from "@/utils/stdhook";
 
 /**
  * Root Page Component
@@ -19,7 +20,7 @@ import buttons from "@/data/RootPageButtons";
  *     - 3 columns on medium/large screens
  */
 export default function Page() {
-    const isDark = true;
+    const isDark = useHtmlDataDark();
 
     const containerBg = isDark
         ? "bg-gray-900 text-gray-100"
@@ -36,12 +37,10 @@ export default function Page() {
 
                 <div className="mb-6">
                     <p className={paragraphColor}>
-                        Example buttons derived from an array of objects. The
-                        page checks{" "}
+                        It is recommended to start from{" "}
                         <code className="rounded bg-slate-100 px-1 py-0.5 text-xs text-white dark:bg-slate-800">
-                            data-dark
-                        </code>{" "}
-                        on <code>{"<html>"}</code> to enable dark styling.
+                            Overview
+                        </code>
                     </p>
                 </div>
 

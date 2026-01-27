@@ -1,6 +1,6 @@
 "use client";
 
-import CustomizedDataGrid from "@/components/CustomizedDataGrid";
+import CustomDataGrid from "@/components/CustomDataGrid";
 import columns from "@/data/table/columns";
 import { useCallback, useEffect, useState } from "react";
 import RowDialog from "./RowDialog";
@@ -105,7 +105,7 @@ export default function TableDataGrid<Row, EmptyRow>({
 
     return (
         <>
-            <CustomizedDataGrid
+            <CustomDataGrid
                 apiRef={apiRef}
                 columns={columns}
                 rows={currentRows ?? []}

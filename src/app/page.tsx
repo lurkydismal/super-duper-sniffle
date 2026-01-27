@@ -20,7 +20,8 @@ import { useHtmlDataDark } from "@/utils/stdhook";
  *     - 3 columns on medium/large screens
  */
 export default function Page() {
-    const isDark = useHtmlDataDark();
+    // const isDark = useHtmlDataDark();
+    const isDark = true;
 
     const containerBg = isDark
         ? "bg-gray-900 text-gray-100"
